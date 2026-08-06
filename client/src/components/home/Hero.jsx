@@ -21,7 +21,7 @@ const Hero = () => {
             <div className="min-h-screen pb-20">
                 {/* Navbar */}
                 <nav className="z-50 flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-40 text-sm">
-                    <a href="https://prebuiltui.com">
+                    <a href="">
                         <img src = "/logo.svg" alt="logo" className="h-11 w-auto"/>
                     </a>
 
@@ -83,7 +83,7 @@ const Hero = () => {
                                 ))}
                             </div>
                             <p className="text-sm text-gray-700">
-                                Used by 10,000+ users
+                                Rated by our Users
                             </p>
                         </div>
                     </div>
@@ -101,13 +101,9 @@ const Hero = () => {
                             Get started
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right ml-1 size-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                         </Link>
-                        <button className="flex items-center gap-2 border border-slate-400 hover:bg-green-50 transition rounded-full px-7 h-12 text-slate-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-video size-5" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"></path><rect x="2" y="6" width="14" height="12" rx="2"></rect></svg>
-                            <span>Try demo</span>
-                        </button>
                     </div>
 
-                    <p className="py-6 text-slate-600 mt-14">Trusting by leading brands, including</p>
+                    <p className="py-6 text-slate-600 mt-14">Resumes that got accepted by leading brands, including</p>
 
                     <div className="flex flex-wrap justify-between max-sm:justify-center gap-6 max-w-3xl w-full mx-auto py-4" id="logo-container">
                         {companiesLogo.map((company, index) => (
