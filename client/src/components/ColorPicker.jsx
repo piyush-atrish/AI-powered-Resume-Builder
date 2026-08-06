@@ -16,11 +16,28 @@ const ColorPicker = ({selectedColor, onChange}) => {
         { name: "Black", value: "#1F2937" }
     ]
 
-    const[isOpen, setIsOpen] = React.useState(false)
+    const [isOpen, setIsOpen] = React.useState(false)
+    const pickerRef = React.useRef(null)
+
+    React.useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (pickerRef.current && !pickerRef.current.contains(event.target)) {
+                setIsOpen(false)
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
+
+    const handleColorSelect = (colorValue) => {
+        onChange(colorValue)
+        setIsOpen(false)
+    }
 
     return (
-        <div className='relative'>
-            <button onClick={()=> setIsOpen(! isOpen)} className='flex items-center gap-1 text-sm text-purple-600 bg-gradient-to-br from-purple-50 to-purple-100
+        <div className='relative' ref={pickerRef}>
+            <button type="button" onClick={() => setIsOpen((prev) => !prev)} className='flex items-center gap-1 text-sm text-purple-600 bg-gradient-to-br from-purple-50 to-purple-100
             ring-purple-300 hover:ring transition-all px-3 py-2 rounded-1g'>
                 <Palette size={16}/> <span className="max-sm:hidden">Accent</span>
             </button>
@@ -29,7 +46,7 @@ const ColorPicker = ({selectedColor, onChange}) => {
                 right-0 p-3 mt-2 z-10 bg-white rounded-md border border-gray-200 shadow-sm'>
                     {colors.map((color)=>(
                         <div key={color.value} className='relative cursor-pointer group
-                        flex flex-col' onClick={()=> {onChange(color.value)}}>
+                        flex flex-col' onClick={() => handleColorSelect(color.value)}>
                         <div className="w-12 h-12 rounded-full border-2 border-transparent group-hover : border-black/25
                         transition-colors" style={{backgroundColor : color.value}}>
                         </div>

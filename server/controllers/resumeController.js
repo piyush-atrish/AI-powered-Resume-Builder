@@ -94,15 +94,18 @@ export const updateResume = async (req, res) => {
 
     if (image) {
       const imageBufferData = fs.createReadStream(image.path);
+      const transformations = [
+        "w-300,h-300,fo-face,z-0.45",
+        removeBackground ? "e-bgremove" : "",
+        removeBackground ? "f-png" : "",
+      ].filter(Boolean);
 
       const response = await imageKit.files.upload({
         file: imageBufferData,
         fileName: "resume.png",
         folder: "user-resumes",
         transformation: {
-          pre:
-            "w-300,h-300,fo-face,z-0.45" +
-            (removeBackground ? ",e-bgremove" : ""),
+          pre: transformations.join(","),
         },
       });
       resumeDataCopy.personal_info.image = response.url;

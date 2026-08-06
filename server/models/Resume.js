@@ -47,15 +47,6 @@ const ResumeSchema = new mongoose.Schema(
         gpa: { type: String },
       },
     ],
-    certification: [
-      {
-        certificate_name: { type: String },
-        description: { type: String },
-        issuer: { type: String },
-        issue_date: { type: Date },
-        credential_url: { type: String },
-      },
-    ],
   },
   { timestamps: true, minimize: false }
 );
